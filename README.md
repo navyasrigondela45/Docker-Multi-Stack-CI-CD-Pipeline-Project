@@ -75,7 +75,9 @@ This repository also contains output screenshots for:
   <img width="1600" height="790" alt="image" src="https://github.com/user-attachments/assets/c456a146-6b8d-4721-99f3-bbc153212aa5" />
 
 - Successful Parameterized Builds
+  
   <img width="1600" height="786" alt="image" src="https://github.com/user-attachments/assets/6dd15cc1-e67e-4793-b6c3-4ae72abc33dd" />
+  <img width="959" height="469" alt="image" src="https://github.com/user-attachments/assets/f367a897-d263-4a64-8a16-eda99c074e00" />
 
 - Docker Image Build Logs
   
