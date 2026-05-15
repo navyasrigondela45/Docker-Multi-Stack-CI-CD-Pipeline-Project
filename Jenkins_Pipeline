@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Code') {
+            steps {
+                git branch: 'main', url: 'https://github.com/navyasrigondela45/Dockerfile-Creation-And-Image-Optimization.git'
+            }
+        }
+        stage('Build Dockerfile') {
+            steps {
+                
+                sh '''
+                cd $TECH_STACK
+                docker build -t $image_name -f Dockerfile.v2 .
+                '''
+            }
+        }
+        stage('Registry') {
+            steps {
+                script {
+                withDockerRegistry(credentialsId: 'dockerhub') {
+                sh '''
+                docker tag $image_name navyasrig/jenkins:$dockerhub_image_tag
+                docker push navyasrig/jenkins:$dockerhub_image_tag
+                '''
+                } }
+            }
+        }
+        stage('Container') {
+            steps {
+                sh '''
+                docker run -d --name $container_name -p $host_port:$default_port navyasrig/jenkins:$dockerhub_image_tag
+                '''
+            }
+        }
+        }
+}
